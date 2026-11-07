@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doppia A | Chi Siamo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <nav class="glass-nav">
+        <div class="logo">Doppia A</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="chi-siamo.html" class="active">Chi Siamo</a>
+            <a href="episodi.html">Episodi</a>
+            <a href="ascoltaci.html">Ascoltaci</a>
+            <a href="contattaci.html">Contatti</a>
+        </div>
+    </nav>
+
+    <section class="page-section fade-in" style="max-width: 1100px; margin: 0 auto; padding-top: 130px; padding-bottom: 60px;">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span style="background: rgba(199, 125, 255, 0.15); color: var(--accent-2); border: 1px solid rgba(199, 125, 255, 0.4); padding: 6px 18px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Dietro il microfono</span>
+            <h2 class="section-title" style="margin-top: 15px; font-size: 3rem;">I Vostri host</h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 35px; margin-bottom: 60px;">
+            
+            <!-- CARD ANDREA -->
+            <div class="glass-card fade-in" style="padding: 40px; border-radius: 24px; border: 1px solid rgba(157, 78, 221, 0.3); background: rgba(30, 15, 45, 0.4); text-align: center; position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='var(--accent-2)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(157, 78, 221, 0.3)';">
+                <div style="width: 90px; height: 90px; background: linear-gradient(135deg, rgba(157, 78, 221, 0.4), rgba(199, 125, 255, 0.15)); border: 2px solid var(--accent-2); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 25px auto; box-shadow: 0 0 30px rgba(157, 78, 221, 0.4);">
+                    <i class="fa-solid fa-fire" style="font-size: 2.5rem; color: #c77dff;"></i>
+                </div>
+                
+                <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 6px;">Andrea Marcorin</h3>
+                <span style="background: rgba(199, 125, 255, 0.2); color: #e0aaff; border: 1px solid rgba(199, 125, 255, 0.4); padding: 4px 14px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px;">
+                    Il Maestro del CAOS
+                </span>
+
+                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1rem;">
+                    Accende le micce e lancia gli argomenti più scottanti senza pensarci due volte. Se una discussione prende una piega del tutto inaspettata ed esilarante, il merito è quasi sicuramente suo.
+                </p>
+            </div>
+
+            <!-- CARD ALESSANDRO -->
+            <div class="glass-card fade-in" style="padding: 40px; border-radius: 24px; border: 1px solid rgba(157, 78, 221, 0.3); background: rgba(30, 15, 45, 0.4); text-align: center; position: relative; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='var(--accent-2)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(157, 78, 221, 0.3)';">
+                <div style="width: 90px; height: 90px; background: linear-gradient(135deg, rgba(157, 78, 221, 0.4), rgba(199, 125, 255, 0.15)); border: 2px solid var(--accent-2); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 25px auto; box-shadow: 0 0 30px rgba(157, 78, 221, 0.4);">
+                    <i class="fa-solid fa-lightbulb" style="font-size: 2.5rem; color: #c77dff;"></i>
+                </div>
+
+                <h3 style="font-size: 2rem; font-weight: 900; margin-bottom: 6px;">Alessandro Moreschi</h3>
+                <span style="background: rgba(199, 125, 255, 0.2); color: #e0aaff; border: 1px solid rgba(199, 125, 255, 0.4); padding: 4px 14px; border-radius: 12px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: inline-block; margin-bottom: 20px;">
+                    Il Visionario
+                </span>
+
+                <p style="color: var(--text-muted); line-height: 1.8; font-size: 1rem;">
+                    Colui che porta le prospettive più strane, le teorie fuori dagli schemi e le idee per il futuro del podcast. Trova il nesso logico anche dove sembra esserci solo confusione.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- MANIFESTO / STORY BOX -->
+        <div style="background: rgba(15, 8, 25, 0.6); padding: 40px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.08); text-align: center; box-shadow: inset 0 0 20px rgba(0,0,0,0.5);">
+            <h3 style="font-size: 1.8rem; font-weight: 900; margin-bottom: 15px; color: #fff;">Come è nato Doppia A?</h3>
+            <p style="color: var(--text-muted); line-height: 1.8; max-width: 800px; margin: 0 auto; font-size: 1.05rem;">
+                Doppia A nasce da un idea mentre Alessandro e Andrea stavano giocando a Supermarket Together, mentre Andrea era in cassa e Ale a sistemare i prodotti. Ad Andrea gli viene in mente una domanda: "Come funziona il podcast? Essendo che tu Ale sei esperto di queste cose?" Da li nasce l'idea di creare il nostro podcast e in un solo giorno abbiamo portato avanti tutto questo portandolo su tante piattaforme di streaming.
+            </p>
+        </div>
+    </section>
+
+    <footer class="glass-footer">
+        <h3 class="logo" style="font-size: 1.5rem;">Doppia A</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Andrea Marcorin & Alessandro Moreschi. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>

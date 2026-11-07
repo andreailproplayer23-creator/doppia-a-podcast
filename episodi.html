@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doppia A | Episodi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bg-orbs">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <nav class="glass-nav">
+        <div class="logo">Doppia A</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="chi-siamo.html">Chi Siamo</a>
+            <a href="episodi.html" class="active">Episodi</a>
+            <a href="ascoltaci.html">Ascoltaci</a>
+            <a href="contattaci.html">Contatti</a>
+        </div>
+    </nav>
+
+    <section class="page-section fade-in">
+        <h2 class="section-title">Archivio episodi</h2>
+        
+        <!-- Qui dentro verranno inseriti gli episodi da Firebase -->
+        <div id="lista-episodi" style="display: flex; flex-direction: column; gap: 20px;">
+            <!-- Messaggio di caricamento iniziale -->
+            <p style="text-align: center; color: var(--text-muted); font-size: 1.2rem;">
+                <i class="fa-solid fa-spinner fa-spin" style="margin-right: 10px; color: var(--accent-2);"></i> Caricamento episodi...
+            </p>
+        </div>
+    </section>
+
+     <footer class="glass-footer">
+        <h3 class="logo" style="font-size: 1.5rem;">Doppia A</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">&copy; 2026 Andrea Marcorin & Alessandro Moreschi. Tutti i diritti riservati.</p>
+    </footer>
+</body>
+</html>
+
+    <!-- Script per caricare gli episodi da Firebase -->
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module">
+        import { db } from './firebase-config.js';
+        // Importiamo le funzioni per leggere dal database e ordinare i risultati
+        import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        async function caricaEpisodi() {
+            const container = document.getElementById('lista-episodi');
+            
+            try {
+                // Cerchiamo la collezione "episodi" e li ordiniamo per numero (dal più recente al più vecchio se usi numeri decrescenti)
+                const q = query(collection(db, "episodi"), orderBy("numero", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                // Svuotiamo il testo "Caricamento in corso..."
+                container.innerHTML = '';
+
+                if (querySnapshot.empty) {
+                    container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">Ancora nessun episodio pubblicato. Tornate presto!</p>';
+                    return;
+                }
+
+                // Per ogni episodio trovato nel database, creiamo la sua grafica
+                querySnapshot.forEach((doc) => {
+                    const ep = doc.data();
+                    
+                    // Se c'è un tag (es. "Novità"), crea l'etichetta, altrimenti lasciala vuota
+                    const tagHtml = ep.tag ? `<span style="background: rgba(199, 125, 255, 0.2); color: var(--accent-2); padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; display: inline-block; border: 1px solid rgba(199, 125, 255, 0.4);">${ep.tag}</span>` : '';
+
+                    const htmlEpisodio = `
+                    <div class="glass-card fade-in" style="display: flex; justify-content: space-between; align-items: center; padding: 30px 40px;">
+                        <div>
+                            ${tagHtml}
+                            <h3 style="font-size: 1.6rem; margin-bottom: 10px;">${ep.titolo}</h3>
+                            <p style="color: var(--text-muted); line-height: 1.6;">${ep.descrizione}</p>
+                        </div>
+                        <a href="${ep.link}" target="_blank" style="width: 65px; height: 65px; min-width: 65px; border-radius: 50%; background: var(--text-main); color: var(--bg-color); display: flex; justify-content: center; align-items: center; font-size: 1.8rem; text-decoration: none; transition: 0.3s; margin-left: 20px; padding-left: 5px;" onmouseover="this.style.transform='scale(1.1)'; this.style.boxShadow='0 0 20px rgba(255,255,255,0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                            <i class="fa-solid fa-play"></i>
+                        </a>
+                    </div>
+                    `;
+                    
+                    // Aggiungiamo l'episodio appena creato alla lista
+                    container.innerHTML += htmlEpisodio;
+                });
+
+            } catch (error) {
+                console.error("Errore durante il caricamento:", error);
+                container.innerHTML = '<p style="text-align: center; color: #ff3333;">Errore nel caricamento degli episodi. Riprova più tardi.</p>';
+            }
+        }
+
+        // Avviamo la funzione appena la pagina si apre
+        caricaEpisodi();
+    </script>
+</body>
+</html>
